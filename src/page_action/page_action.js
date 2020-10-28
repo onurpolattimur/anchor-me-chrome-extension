@@ -19,8 +19,9 @@ function renderResponse(response) {
 
     $('.anchor-link').on('click', function (event) {
         event.preventDefault();
-        console.log(event);
+        console.log("Event", event);
         updateURL(event.target.hash);
+        return false;
     });
 }
 
@@ -30,17 +31,18 @@ function updateURL(anchorId) {
         "active": true,
         "currentWindow": true
     }, function (tabs) {
-        let url = tabs[0].url;
-        url = url.match(/.+?(?=#)/) + anchorId;
+        baseUrl = tabs[0].url.match(/.+?(?=#)/);
+        targetUrl = (baseUrl === null ? tabs[0].url : baseUrl) + anchorId;
+        console.log(targetUrl);
         chrome.tabs.update(tabs[0].id, {
-            url: url
+            url: targetUrl
         });
     });
 
 }
 
 
-function buildAnchorLink(url) {
-    const anchorLink = `<div><a class="anchor-link" href=#${url}>${url}</a></div>`
+function buildAnchorLink(anchor) {
+    const anchorLink = `<div><a class="anchor-link" href=#${anchor.anchorId}>${anchor.name}</a></div>`
     return anchorLink;
 }
