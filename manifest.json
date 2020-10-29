@@ -1,9 +1,9 @@
 {
-  "name": "Test THIS : Extension boilerplate",
+  "name": "Anchor Me",
   "version": "0.0.1",
   "manifest_version": 2,
-  "description": "This extension was created with the awesome extensionizr.com",
-  "homepage_url": "http://extensionizr.com",
+  "description": "Throw anchor wherever you want.",
+  "homepage_url": "https://github.com/onurpolattimur/anchor-me-chrome-extension",
   "icons": {
     "16": "icons/icon16.png",
     "48": "icons/icon48.png",
