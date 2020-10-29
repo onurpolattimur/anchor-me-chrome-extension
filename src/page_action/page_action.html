@@ -1,24 +1,82 @@
 <!doctype html>
 <style type="text/css">
-	#mainPopup {
-		padding: 10px;
-		height: 200px;
-		width: 400px;
-		font-family: Helvetica, Ubuntu, Arial, sans-serif;
+	@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@300;400&display=swap");
+	@import url("https://fonts.googleapis.com/css2?family=Rock+Salt&display=swap");
+
+	body {
+		margin: 0;
 	}
 
-	h1 {
-		font-size: 2em;
+	#anchor-popup {
+		width: 400px;
+		background: #FFFFFF;
+		padding: 1em;
+		margin: 0 auto;
+		border-top: 4px solid #fa5726;
+		box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+		font-family: 'Roboto', sans-serif;
+	}
+
+	#anchor-popup .header {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+	}
+
+
+	#anchor-popup .header img {
+		width: 60px;
+	}
+
+	#anchor-popup .header span {
+		font-family: 'Rock Salt', cursive;
+		margin-left: 30px;
+		font-size: 1.5em;
+	}
+
+	#anchor-popup #anchors {
+		margin-top: 10px;
+		padding: 10px;
+		border-top: 1px dashed red;
+		text-align: center;
+	}
+
+	#anchor-popup #anchors ul {
+		padding: 0;
+		border: 1px solid #bbb;
+		border-radius: 5px;
+		font-weight: 200;
+	}
+
+	#anchor-popup #anchors li {
+		list-style: none;
+		padding: 0.4em;
+		border-top: 1px solid #ccc;
+	}
+
+	#anchor-popup #anchors li:hover {
+		background-color: #fa572610;
+		cursor: pointer;
+	}
+
+	#anchor-popup #anchors li:first-child {
+		border-top: none;
 	}
 </style>
 
-<div id="mainPopup">
-	<h1>Hello extensionizr!</h1>
-	<p>To shut this popup down, edit the manifest file and remove the "default popup" key. To edit it, just edit
-		ext/page_action/page_action.html. The CSS is there, too.</p>
-	<div id="anchors">Loading..</div>
+<div id="anchor-popup">
+	<div class="header">
+		<img src="https://i.hizliresim.com/2Gvc7q.png" />
+		<span>Anchor Me</span>
+	</div>
+
+	<div id="anchors">
+		<ul>
+			<li> It's important! </li>
+			<li> Paymen Request </li>
+		</ul>
+	</div>
 </div>
 
 <script src="../../js/jquery/jquery.min.js"></script>
 <script src="page_action.js"></script>
-

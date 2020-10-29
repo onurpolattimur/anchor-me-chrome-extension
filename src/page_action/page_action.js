@@ -13,9 +13,10 @@ function renderResponse(response) {
     response.anchors.forEach(element => {
         content += buildAnchorLink(element);
     });
+    content = `<ul>${content}</ul>`
     console.log(content);
 
-    $('#anchors').html(content);
+    //$('#anchors').html(content);
 
     $('.anchor-link').on('click', function (event) {
         event.preventDefault();
@@ -43,6 +44,7 @@ function updateURL(anchorId) {
 
 
 function buildAnchorLink(anchor) {
-    const anchorLink = `<div><a class="anchor-link" href=#${anchor.anchorId}>${anchor.name}</a></div>`
+    // const anchorLink = `<div><a class="anchor-link" href=#${anchor.anchorId}>${anchor.name}</a></div>`
+    const anchorLink = `<li><a class="anchor-link" href=#${anchor.anchorId}>${anchor.name}</a></li>`
     return anchorLink;
 }

@@ -1,4 +1,6 @@
 //store.set('user', { name:'Marcus' });
+//http://pixelartmaker.com/art/08ede37db9c6da7
+//http://pixelartmaker.com/art/2d886149d3becab
 var watchMouse = true;
 var mousePosition = {
 	x: 0,
@@ -31,7 +33,7 @@ function watchMouseEvent() {
 	console.log($('.holder'));
 }
 
-function getInput() {
+function getInput(addedTagId) {
 	$('.anchor-holder').on('click', "label.editable", function () {
 		var $lbl = $(this), o = $lbl.text(),
 			$txt = $('<input type="text" class="editable-label-text" value="' + o + '" />');
@@ -50,6 +52,10 @@ function getInput() {
 				}
 			});
 	});
+	const el = $(`#${addedTagId} label.editable`);
+
+	//$('#' + addedTagId).click();
+
 }
 
 function addAnchor(message) {
@@ -64,7 +70,7 @@ function addAnchor(message) {
 	//const bodyContent = bodyElement.html() + `<a class="git-anc-cls" id="${mousePosition.x}-${mousePosition.y}" style="position:absolute;left:${mousePosition.x}px;top:${mousePosition.y}px">OPT</a>`;
 	const bodyContent = bodyElement.html() + content;
 	$("body").html(bodyContent)
-	getInput();
+	getInput(`${mousePosition.x}-${mousePosition.y}`);
 
 }
 
