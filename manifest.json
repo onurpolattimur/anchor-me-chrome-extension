@@ -11,7 +11,7 @@
   },
   "permissions": [
     "contextMenus", 
-    "tabs"
+    "activeTab"
   ],
   
   "default_locale": "en",
