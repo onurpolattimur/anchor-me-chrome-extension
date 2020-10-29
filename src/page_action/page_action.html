@@ -8,13 +8,14 @@
 	}
 
 	#anchor-popup {
-		width: 400px;
+		width: 300px;
 		background: #FFFFFF;
 		padding: 1em;
 		margin: 0 auto;
 		border-top: 4px solid #fa5726;
 		box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
 		font-family: 'Roboto', sans-serif;
+		min-height: 400px;
 	}
 
 	#anchor-popup .header {
@@ -32,6 +33,7 @@
 		font-family: 'Rock Salt', cursive;
 		margin-left: 30px;
 		font-size: 1.5em;
+		color: #5a5a5a;
 	}
 
 	#anchor-popup #anchors {
@@ -50,8 +52,14 @@
 
 	#anchor-popup #anchors li {
 		list-style: none;
-		padding: 0.4em;
 		border-top: 1px solid #ccc;
+	}
+
+	#anchor-popup #anchors li a {
+		color: black;
+		text-decoration: none;
+		padding: 0.4em;
+		display: block;
 	}
 
 	#anchor-popup #anchors li:hover {
@@ -61,6 +69,21 @@
 
 	#anchor-popup #anchors li:first-child {
 		border-top: none;
+	}
+
+	#anchor-popup .info {
+		font-family: 'Roboto', sans-serif;
+		font-weight: 200;
+		font-size: 1em;
+		position: absolute;
+		left: 0;
+		bottom: 10px;
+		text-align: center;
+		width: 100%;
+		padding-left: inherit;
+		right: 0;
+		padding-right: inherit;
+		box-sizing: border-box;
 	}
 </style>
 
@@ -75,6 +98,10 @@
 			<li> It's important! </li>
 			<li> Paymen Request </li>
 		</ul>
+	</div>
+
+	<div class="info">
+		You can edit your anchor's name with clicking the label after add new anchor.
 	</div>
 </div>
 

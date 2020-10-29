@@ -16,7 +16,7 @@ function renderResponse(response) {
     content = `<ul>${content}</ul>`
     console.log(content);
 
-    //$('#anchors').html(content);
+    $('#anchors').html(content);
 
     $('.anchor-link').on('click', function (event) {
         event.preventDefault();

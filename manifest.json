@@ -17,7 +17,6 @@
   "default_locale": "en",
   "background": {
     "scripts": [
-      "js/store.everything.js",
       "src/bg/background.js"
     ],
     "persistent": true
@@ -33,7 +32,6 @@
       "matches": [ "http://*/*", "https://*/*"] 
       ,
       "js": [
-        "js/store.everything.js",
         "js/jquery/jquery.min.js",
         "src/inject/inject.js"
       ]

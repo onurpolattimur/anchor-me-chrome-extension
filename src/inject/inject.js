@@ -1,4 +1,3 @@
-//store.set('user', { name:'Marcus' });
 //http://pixelartmaker.com/art/08ede37db9c6da7
 //http://pixelartmaker.com/art/2d886149d3becab
 var watchMouse = true;
@@ -64,8 +63,8 @@ function addAnchor(message) {
 	const anchorId = `${mousePosition.x}-${mousePosition.y}`
 	const bodyElement = $("body");
 	const content = `
-	<div class="anchor-holder" style="position:absolute;left:${mousePosition.x}px;top:${mousePosition.y}px" id="${mousePosition.x}-${mousePosition.y}">
-		<label class="editable">${anchorId}</label>
+	<div class="anchor-holder" style="position:absolute;left:${mousePosition.x-40}px;top:${mousePosition.y-21}px; color: #f95727;z-index: 999999;" id="${mousePosition.x}-${mousePosition.y}">
+		<label class="editable" style="display: flex;justify-content: center;align-items: center;">	<img src="https://i.hizliresim.com/2Gvc7q.png" style="width:30px" />${anchorId}</label>
   	</div>`
 	//const bodyContent = bodyElement.html() + `<a class="git-anc-cls" id="${mousePosition.x}-${mousePosition.y}" style="position:absolute;left:${mousePosition.x}px;top:${mousePosition.y}px">OPT</a>`;
 	const bodyContent = bodyElement.html() + content;
