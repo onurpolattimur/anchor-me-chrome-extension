@@ -1,6 +1,6 @@
 {
   "name": "Anchor Me",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "manifest_version": 2,
   "description": "Throw anchor wherever you want.",
   "homepage_url": "https://github.com/onurpolattimur/anchor-me-chrome-extension",

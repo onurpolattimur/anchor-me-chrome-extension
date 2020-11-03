@@ -7,10 +7,6 @@ chrome.extension.onMessage.addListener(
 
 
 function genericOnClick(info, tab) {
-  console.log("item " + info.menuItemId + " was clicked");
-  console.log("info: " + JSON.stringify(info));
-  console.log("tab: " + JSON.stringify(tab));
-
   //Add all you functional Logic here
   chrome.tabs.query({
     "active": true,
@@ -23,12 +19,6 @@ function genericOnClick(info, tab) {
   });
 }
 
-
-searchUrbanDict = function (word) {
-  var query = word.selectionText;
-  console.log("test");
-  //chrome.tabs.create({ url: "http://www.urbandictionary.com/define.php?term=" + store.get('user').name });
-};
 
 chrome.contextMenus.create({
   title: "Add Anchor",

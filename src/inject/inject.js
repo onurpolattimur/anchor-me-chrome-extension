@@ -28,16 +28,14 @@ function watchMouseEvent() {
 		mousePosition.x = e.pageX;
 		mousePosition.y = e.pageY;
 	})
-
-	console.log($('.holder'));
 }
 
 function getInput(addedTagId) {
-	$('.anchor-holder').on('click', "label.editable", function () {
-		var $lbl = $(this), o = $lbl.text(),
-			$txt = $('<input type="text" class="editable-label-text" value="' + o + '" />');
-		$lbl
-			.replaceWith($txt);
+	$('.anchor-holder').on('click', "label.editable span", function () {
+		var $lbl = $(this);
+		var o = $lbl.text();
+		var $txt = $(`<input type="text" class="editable-label-text" value="${o}" />`);
+		$lbl.replaceWith($txt);
 		$txt.focus();
 
 		$txt.blur(function () {
@@ -58,13 +56,11 @@ function getInput(addedTagId) {
 }
 
 function addAnchor(message) {
-	console.log(message);
-	console.log(mousePosition);
 	const anchorId = `${mousePosition.x}-${mousePosition.y}`
 	const bodyElement = $("body");
 	const content = `
 	<div class="anchor-holder" style="position:absolute;left:${mousePosition.x-40}px;top:${mousePosition.y-21}px; color: #f95727;z-index: 999999;" id="${mousePosition.x}-${mousePosition.y}">
-		<label class="editable" style="display: flex;justify-content: center;align-items: center;">	<img src="https://i.hizliresim.com/2Gvc7q.png" style="width:30px" />${anchorId}</label>
+		<label class="editable" style="color:#f95727;display: flex;justify-content: center;align-items: center;"><img src="https://i.hizliresim.com/2Gvc7q.png" style="width:30px" /><span>${anchorId}</span></label>
   	</div>`
 	//const bodyContent = bodyElement.html() + `<a class="git-anc-cls" id="${mousePosition.x}-${mousePosition.y}" style="position:absolute;left:${mousePosition.x}px;top:${mousePosition.y}px">OPT</a>`;
 	const bodyContent = bodyElement.html() + content;
@@ -74,10 +70,7 @@ function addAnchor(message) {
 }
 
 function getAnchors() {
-	console.log($(".anchor-holder"));
-
 	const anchors = $(".anchor-holder").map(function () { return { name: $(this).children('.editable').text(), anchorId: this.id } }).get();
-	console.log(anchors);
 	return anchors;
 
 }
