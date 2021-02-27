@@ -5,6 +5,8 @@ var mousePosition = {
 
 var anchorList = [];
 
+const imgUrl = chrome.runtime.getURL("icons/icon128.png");
+
 chrome.extension.sendMessage({}, function (response) {
 	var readyStateCheckInterval = setInterval(function () {
 		if (document.readyState === "complete") {
@@ -56,7 +58,7 @@ function addAnchor(message) {
 	const bodyElement = $("body");
 	const content = `
 	<div class="anchor-holder" style="position:absolute;left:${mousePosition.x-40}px;top:${mousePosition.y-21}px; color: #f95727;z-index: 999999;" id="${mousePosition.x}-${mousePosition.y}">
-		<label class="editable" style="color:#f95727;display: flex;justify-content: center;align-items: center;"><img src="https://i.hizliresim.com/2Gvc7q.png" style="width:30px" /><span>${anchorId}</span></label>
+		<label class="editable" style="color:#f95727;display: flex;justify-content: center;align-items: center;"><img src="${imgUrl}" style="width:30px" /><span>${anchorId}</span></label>
   	</div>`
 	$("body").append(content);
 	getInput(`${mousePosition.x}-${mousePosition.y}`);
