@@ -76,7 +76,6 @@ function updateURL(anchorId) {
 
 
 function buildAnchorLink(anchor) {
-    // const anchorLink = `<div><a class="anchor-link" href=#${anchor.anchorId}>${anchor.name}</a></div>`
-    const anchorLink = `<li><a class="anchor-link" href=#${anchor.anchorId}>${anchor.name}</a></li>`
+    const anchorLink = `<li><a class="anchor-link" href=#${anchor.id}>${anchor.label}</a></li>`
     return anchorLink;
 }

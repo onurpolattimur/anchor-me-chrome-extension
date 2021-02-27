@@ -7,7 +7,6 @@ chrome.extension.onMessage.addListener(
 
 
 function genericOnClick(info, tab) {
-  //Add all you functional Logic here
   chrome.tabs.query({
     "active": true,
     "currentWindow": true

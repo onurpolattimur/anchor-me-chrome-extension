@@ -1,28 +1,20 @@
-//http://pixelartmaker.com/art/08ede37db9c6da7
-//http://pixelartmaker.com/art/2d886149d3becab
-var watchMouse = true;
 var mousePosition = {
 	x: 0,
 	y: 0
 };
+
+var anchorList = [];
 
 chrome.extension.sendMessage({}, function (response) {
 	var readyStateCheckInterval = setInterval(function () {
 		if (document.readyState === "complete") {
 			clearInterval(readyStateCheckInterval);
 			watchMouseEvent();
-
-			// ----------------------------------------------------------
-			// This part of the script triggers when page is done loading
-			console.log("Hello. This message was sent from scripts/inject.js");
-			// ----------------------------------------------------------
-
 		}
 	}, 10);
 });
 
 function watchMouseEvent() {
-
 	const bodyElement = $("body");
 	bodyElement.on('contextmenu', function (e) {
 		mousePosition.x = e.pageX;
@@ -31,7 +23,7 @@ function watchMouseEvent() {
 }
 
 function getInput(addedTagId) {
-	$('.anchor-holder').on('click', "label.editable span", function () {
+	$(`[id="${addedTagId}"]`).on('click', "label.editable span", function () {
 		var $lbl = $(this);
 		var o = $lbl.text();
 		var $txt = $(`<input type="text" class="editable-label-text" value="${o}" />`);
@@ -46,13 +38,17 @@ function getInput(addedTagId) {
 					var no = $(this).val();
 					$lbl.text(no);
 					$txt.replaceWith($lbl);
+					updateAnchor(addedTagId,no);
 				}
 			});
 	});
-	const el = $(`#${addedTagId} label.editable`);
+}
 
-	//$('#' + addedTagId).click();
-
+function updateAnchor(anchorId, label){
+	let anchor = anchorList.find(x=> x.id === anchorId);
+	if(anchor){
+		anchor.label = label;
+	}
 }
 
 function addAnchor(message) {
@@ -62,17 +58,17 @@ function addAnchor(message) {
 	<div class="anchor-holder" style="position:absolute;left:${mousePosition.x-40}px;top:${mousePosition.y-21}px; color: #f95727;z-index: 999999;" id="${mousePosition.x}-${mousePosition.y}">
 		<label class="editable" style="color:#f95727;display: flex;justify-content: center;align-items: center;"><img src="https://i.hizliresim.com/2Gvc7q.png" style="width:30px" /><span>${anchorId}</span></label>
   	</div>`
-	//const bodyContent = bodyElement.html() + `<a class="git-anc-cls" id="${mousePosition.x}-${mousePosition.y}" style="position:absolute;left:${mousePosition.x}px;top:${mousePosition.y}px">OPT</a>`;
-	const bodyContent = bodyElement.html() + content;
-	$("body").html(bodyContent)
+	$("body").append(content);
 	getInput(`${mousePosition.x}-${mousePosition.y}`);
+	anchorList.push({
+		id:`${mousePosition.x}-${mousePosition.y}`,
+		label: anchorId
+	})
 
 }
 
 function getAnchors() {
-	const anchors = $(".anchor-holder").map(function () { return { name: $(this).children('.editable').text(), anchorId: this.id } }).get();
-	return anchors;
-
+	return anchorList;
 }
 
 chrome.extension.onMessage.addListener(function (message, sender, callback) {
